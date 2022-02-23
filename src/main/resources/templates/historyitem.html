@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html xmlns:layout="http://www.w3.org/1999/xhtml" layout:decorate="~{fragments/main_layout}"
+    xmlns:th="https://www.thymeleaf.org">
+
+<div class="container mt-4 mb-5" layout:fragment="content">
+    <div class="preview">
+        <h1><span id="typeBadge" class="badge bg-success" th:text="${history.type}"></span></h1>
+        <p id="previewID" class="lead" th:inline="text">รายการ #[[${history.id}]]</p>
+    </div>
+    <p id="historyTime" th:text="${history.createDate}" style="font-size: 20px;"></p>
+    <span id="historyStatus" th:text="${history.status}" style="font-size: 15px;"></span>
+    <div>
+        <p class="lead mt-4 mb-3">🍈 รายการผลไม้ในรายการนี้</p>
+        <table class="table table-bordered table-striped mb-4">
+            <thead class="table-dark">
+                <tr>
+                    <th>id</th>
+                    <th>ชื่อผลไม้</th>
+                    <th>จำนวน</th>
+                    <th>ราคา(ต่อกิโลกรัม)</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="historyItem : ${historyItem}">
+                    <td th:text="${historyItem.productId}"></td>
+                    <td th:text="${historyItem.name}"></td>
+                    <td th:text="${historyItem.quantity}"></td>
+                    <td th:text="${historyItem.price}"></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <style>
+        .preview {
+            padding-bottom: 10px;
+            overflow: hidden;
+        }
+
+        #previewID {
+            margin-left: 180px; margin-top: 5px; font-size: 32px;
+        }
+
+        h1 {
+            margin-bottom: 5px;
+            float: left;
+        }
+
+        h1 span {
+            color: #fff;
+            background-color: #446688;
+            padding: 1px 5px 3px 5px;
+            -webkit-border-radius: 3px;
+            -moz-border-radius: 3px;
+            border-radius: 3px;
+        }
+    </style>
+    <script th:src="@{/js/moment.js}"></script>
+    <script>
+        $(document).ready(function () {
+            const dateConvert = (date) => {
+                return `${moment(date).format('DD/MM/YYYY - HH:mm:ss')} (${moment(date).fromNow()})`;
+            }
+
+            if ($('#typeBadge').text() == 'EXPORT') {
+                $('#typeBadge').attr('class', 'badge bg-danger');
+            }
+
+            if ($('#historyStatus').text() == 'ACCEPT') {
+                $('#historyStatus').attr('class','badge rounded-pill bg-success');
+            }
+            else if ($('#historyStatus').text() == 'PENDING'){
+                $('#historyStatus').attr('class','badge rounded-pill bg-warning text-dark');
+            }
+            else{
+                $('#historyStatus').attr('class','badge rounded-pill bg-danger');
+            }
+
+            $('#historyTime').text(dateConvert($('#historyTime').text()));
+        })
+    </script>
+</div>
+
+</html>

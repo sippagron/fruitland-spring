@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fruitland</title>
+
+  <link rel="icon"
+    href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🍈</text></svg>">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css"
+    integrity="sha512-HK5fgLBL+xu6dm/Ii3z4xhlSUyZgTT9tuc/hSrtw6uzJOvgRr2a9jyxxT1ely+B+xFAmJKVSTbpM/CuL7qxO8w=="
+    crossorigin="anonymous" />
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<!--  <link rel="stylesheet" href="{{ asset('css/landing.css') }}">-->
+<!--  <link rel="stylesheet" href="{{ asset('js/bootstrap/landing.js') }}">-->
+<!--  <script th:src="@{/css/landing.css}"></script>-->
+<!--  <script src=static/css/landing.css></script>-->
+
+</head>
+
+<body>
+
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container">
+      <a class="navbar-brand" href="#">🍈 Fruitland</a>
+
+      <form class="d-flex">
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav">
+
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="/home">Home</a>
+            </li>
+<!--            <li class="nav-item">-->
+<!--              <a class="nav-link" href="#about">About</a>-->
+<!--            </li>-->
+          </ul>
+        </div>
+      </form>
+    </div>
+  </nav>
+
+  <div>
+    <span id="heading">Welcome to Fruitland🍓</span>
+    <div id="slider">
+      <div class="slides">
+        <img src="https://hhsbanner.com/wp-content/uploads/2019/03/victoria_falls-900x300.jpg" width="100%" />
+      </div>
+
+      <div class="slides">
+        <img src="https://blog.cognifit.com/wp-content/uploads/2019/11/hiking-900x300.jpg" width="100%" />
+      </div>
+
+      <div class="slides">
+        <img src="https://travelfree.info/wp-content/uploads/2018/02/croatia-waterfall-in-deep-forest-of-Cr-12755165-900x300.jpg"
+             width="100%" />
+      </div>
+
+      <div class="slides">
+        <img src="https://www.piemonturismo.it/site/wp-content/uploads/2014/07/13-laghi-grande.jpg" width="100%" />
+      </div>
+
+      <div class="slides">
+        <img src="https://improvephotography.com/wp-content/uploads/2017/09/Julian-Baird-20170914-3-900px.jpg"
+             width="100%" />
+      </div>
+      <div id="dot">
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+      </div>
+    </div>
+
+    <!-- Features icons -->
+    <section class="icons bg-black text-center">
+      <div class="container">
+        <div class="row">
+
+          <div class="col-lg-4">
+            <div class="icons-items ">
+              <div class="card">
+                <div class="card-body">
+                  <div class="icons-icon text-dark">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="50" fill="currentColor" class="bi bi-box"
+                      viewBox="0 0 16 16">
+                      <path
+                        d="M8.186 1.113a.5.5 0 0 0-.372 0L1.846 3.5 8 5.961 14.154 3.5 8.186 1.113zM15 4.239l-6.5 2.6v7.922l6.5-2.6V4.24zM7.5 14.762V6.838L1 4.239v7.923l6.5 2.6zM7.443.184a1.5 1.5 0 0 1 1.114 0l7.129 2.852A.5.5 0 0 1 16 3.5v8.662a1 1 0 0 1-.629.928l-7.185 2.874a.5.5 0 0 1-.372 0L.63 13.09a1 1 0 0 1-.63-.928V3.5a.5.5 0 0 1 .314-.464L7.443.184z" />
+                    </svg>
+                    <p><strong id="allProduct" class="count">99</strong> รายการ</p>
+                  </div>
+                  <p class="icons-text mb-3">ผลไม้ทั้งหมด</p>
+                  <a type="button" class="btn btn-primary" href="/home">Check fruit</a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-4">
+            <div class="icons-items ">
+              <div class="card">
+                <div class="card-body">
+                  <div class="icons-icon text-dark">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="50" fill="currentColor" class="bi bi-box-seam"
+                      viewBox="0 0 16 16">
+                      <path
+                        d="M8.186 1.113a.5.5 0 0 0-.372 0L1.846 3.5l2.404.961L10.404 2l-2.218-.887zm3.564 1.426L5.596 5 8 5.961 14.154 3.5l-2.404-.961zm3.25 1.7l-6.5 2.6v7.922l6.5-2.6V4.24zM7.5 14.762V6.838L1 4.239v7.923l6.5 2.6zM7.443.184a1.5 1.5 0 0 1 1.114 0l7.129 2.852A.5.5 0 0 1 16 3.5v8.662a1 1 0 0 1-.629.928l-7.185 2.874a.5.5 0 0 1-.372 0L.63 13.09a1 1 0 0 1-.63-.928V3.5a.5.5 0 0 1 .314-.464L7.443.184z" />
+                    </svg>
+                    <p><strong id="allRequest" class="count">99</strong> รายการ</p>
+                  </div>
+                  <p class="icons-text mb-3">ผลไม้รอการยืนยัน</p>
+                  <a type="button" class="btn btn-primary" href="/admin">Check import/export request</a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-4">
+            <div class="icons-items ">
+              <div class="card">
+                <div class="card-body">
+                  <div class="icons-icon text-dark">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="50" fill="currentColor" class="bi bi-check2-square"
+                      viewBox="0 0 16 16">
+                      <path
+                        d="M3 14.5A1.5 1.5 0 0 1 1.5 13V3A1.5 1.5 0 0 1 3 1.5h8a.5.5 0 0 1 0 1H3a.5.5 0 0 0-.5.5v10a.5.5 0 0 0 .5.5h10a.5.5 0 0 0 .5-.5V8a.5.5 0 0 1 1 0v5a1.5 1.5 0 0 1-1.5 1.5H3z" />
+                      <path
+                        d="M8.354 10.354l7-7a.5.5 0 0 0-.708-.708L8 9.293 5.354 6.646a.5.5 0 1 0-.708.708l3 3a.5.5 0 0 0 .708 0z" />
+                    </svg>
+                    <p><strong id="allHistory" class="count">99</strong> รายการ</p>
+                  </div>
+                  <p class="icons-text mb-3">ประวัติการนำเข้า/นำออก</p>
+                  <a type="button" class="btn btn-primary" href="/history">Check import/export history</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+
+
+  <!-- Footer -->
+  <footer class="bg-light">
+    <div class="container">
+      <div class="row">
+        <div class="col-12 text-center">
+          <p class="text-muted"><strong>Fruitland project</strong> @ 01418321 System Analysis and Design ✨</p>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW"
+    crossorigin="anonymous"></script>
+  <script>
+    const display = async () => {
+      await $.get('http://localhost:3001/api/products/count', function (item) {
+        count = JSON.stringify(item[0]).split(":")[1].replace("}", "")
+        $('#allProduct').text(count);
+      });
+
+      await $.get('http://localhost:3001/api/history/pending/count', function (item) {
+        count = JSON.stringify(item[0]).split(":")[1].replace("}", "")
+        $('#allRequest').text(count);
+      });
+
+      await $.get('http://localhost:3001/api/history/count', function (item) {
+        count = JSON.stringify(item[0]).split(":")[1].replace("}", "")
+        $('#allHistory').text(count);
+      });
+
+      $('.count').each(function () {
+        $(this).prop('Counter', 0).animate({
+          Counter: $(this).text()
+        }, {
+          duration: 1000,
+          easing: 'swing',
+          step: function (now) {
+            $(this).text(Math.ceil(now));
+          }
+        });
+      });
+    }
+
+    display()
+
+    var index = 0;
+
+var slides = document.querySelectorAll(".slides");
+var dot = document.querySelectorAll(".dot");
+
+function changeSlide(){
+
+  if(index<0){
+    index = slides.length-1;
+  }
+
+  if(index>slides.length-1){
+    index = 0;
+  }
+
+  for(let i=0;i<slides.length;i++){
+    slides[i].style.display = "none";
+    dot[i].classList.remove("active");
+  }
+
+  slides[index].style.display= "block";
+  dot[index].classList.add("active");
+
+  index++;
+
+  setTimeout(changeSlide,2000);
+
+}
+
+changeSlide();
+  </script>
+
+
+  <style>
+    .jumbotron-image {
+      background-position: center center;
+      background-repeat: no-repeat;
+      background-size: cover;
+      padding: 90px 50px;
+    }
+
+    {
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+  }
+  @keyframes fade{
+    from{
+      opacity:0.4;
+    }
+    to{
+      opacity:1;
+    }
+  }
+  #slider{
+    margin:0 auto;
+    width:80%;
+    overflow:hidden;
+  }
+
+  .slides{
+    overflow:hidden;
+    animation-name:fade;
+    animation-duration:1s;
+    display:none;
+  }
+
+  img{
+    width:100%;
+  }
+
+  #dot{
+    margin:0 auto;
+    text-align:center;
+  }
+  .dot{
+    display:inline-block;
+    border-radius:50%;
+    background:#d3d3d3;
+    padding:8px;
+    margin:10px 5px;
+  }
+
+  .active{
+    background:black;
+  }
+
+  @media (max-width:567px){
+    #slider{
+      width:100%;
+
+    }
+  }
+
+  #heading{
+    display:block;
+    text-align:center;
+    font-size:2em;
+    margin:10px 0px;
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+
+  }
+  </style>
+  </div>
+
+
+
+</body>
+
+</html>

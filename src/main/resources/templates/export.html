@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html xmlns:layout="http://www.w3.org/1999/xhtml" layout:decorate="~{fragments/main_layout}"
+    xmlns:th="https://www.thymeleaf.org">
+
+<div class="container mt-3 mb-5" layout:fragment="content">
+    <h1 style="text-align: center;">Fruit Export (นำออกผลไม้)</h1>
+    <div class="mt-4">
+        <p class="lead mb-4">🛒 Export list (รายการนำออก)<button id="exportAllBtn" class="btn btn-primary" style="float: right;"><i class="fas fa-shopping-basket"></i> นำออก</button></p>
+        <table class="table table-bordered table-striped mb-4">
+            <thead class="table-dark">
+                <tr>
+                    <th>id</th>
+                    <th>ชื่อผลไม้</th>
+                    <th style="text-align: right;">จำนวน (กิโลกรัม)</th>
+                    <th style="text-align: right;">ราคา (บาท/กิโลกรัม)</th>
+                    <th style="text-align: center;">#</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="product : ${cart}">
+                    <td th:text="${product.productId}"></td>
+                    <td th:text="${product.name}" style="font-size: 19px;"></td>
+                    <td th:text="${product.quantity}" style="text-align: right;"></td>
+                    <td th:text="${product.price}" style="text-align: right;"></td>
+                    <td style="text-align: center;">
+                        <a class="btn btn-danger" th:href="@{/remove/{id}(id=${product.id})}">ลบรายการ</a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <hr>
+        <p class="lead mt-4 mb-4">🍈 Fruit list (รายการผลไม้)</p>
+        <table id="productList" class="table table-striped table-bordered table-hover" style="border: 1px solid rgb(222, 222, 222);">
+            <thead style="background-color: #836953;">
+                <tr>
+                    <th>id</th>
+                    <th>ชื่อผลไม้</th>
+                    <th style="text-align: right;">จำนวน (กิโลกรัม)</th>
+                    <th style="text-align: center;">Safety stock</th>
+                    <th style="text-align: right;">ราคา (บาท/กิโลกรัม)</th>
+                    <th style="text-align: center;">#</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="product : ${products}">
+                    <td th:text="${product.id}"></td>
+                    <td th:text="${product.name}" style="font-size: 19px;"></td>
+                    <td th:text="${product.quantity}" style="text-align: right;"></td>
+                    <td th:text="${product.safetyStock}" style="text-align: center;font-weight: bold;"></td>
+                    <td th:text="${product.price}" style="text-align: right;"></td>
+                    <td style="text-align: center;">
+                        <a class="btn btn-success" th:href="@{/export/get/{id}(id=${product.id})}">เพิ่มรายการ</a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <div class="modal fade" id="myModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">ต้องการนำออกผลไม้นี้ ?</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body" id="modalBody">
+                        <p class="lead" id="productName" style="font-size: 24px;"></p>
+                        <span class="badge bg-primary" id="productQuantity"></span>
+                        <span class="badge bg-success" id="productSafe"></span>
+                        <hr>
+                        <p>จำนวนผลไม้ที่ต้องการนำออก</p>
+                        <input type="number" min="1" max="999" value="1" id="sQuantity" name="quantity">  กิโลกรัม
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary" id="exportBtn"><i class="fas fa-plus"></i> Export</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <style>
+            th {
+                color: white;
+            }
+        </style>
+        <script th:src="@{/js/warehouse/export.js}"></script>
+        <script>
+            document.querySelector("input").addEventListener("keydown", function (event) {
+                if (event.which === 69 || event.which === 189 || event.which === 110 || event.which === 190) {
+                    event.preventDefault();
+                }
+            });
+        </script>
+    </div>
+</div>
+
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html xmlns:layout="http://www.w3.org/1999/xhtml" layout:decorate="~{fragments/main_layout}"
+    xmlns:th="https://www.thymeleaf.org">
+
+<div class="container mt-3 mb-5" layout:fragment="content">
+    <h1>📖 History (ประวัติการทำรายการ)</h1>
+    <div class="mt-3 mb-4">
+        <span class="badge bg-success" id="ib" style="font-size: 15px;">yay</span>
+        <span class="badge bg-danger" id="eb" style="font-size: 15px;">yay</span>
+        <span class="badge bg-primary" id="historyNoti" style="font-size: 15px;">yay</span>
+    </div>
+    <div class="mt-4">
+        <table id="historyList" class="table table-striped table-bordered table-hover"
+            style="border: 1px solid rgb(222, 222, 222);">
+            <thead style="background-color: #836953;">
+                <tr>
+                    <th>id</th>
+                    <th>ประเภท</th>
+                    <th>วันที่</th>
+                    <th>สถานะ</th>
+                    <th>#</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="history : ${historyList}">
+                    <td th:text="${history.id}" style="text-align: center; font-size: 18px;"></td>
+                    <td th:text="${history.type}" style="text-align: center; font-size: 20px;"></td>
+                    <td th:text="${history.createDate}" style="text-align: center; font-size: 18px;"></td>
+                    <td th:text="${history.status}" style="text-align: center; font-weight: bold;"></td>
+                    <td style="text-align: center;">
+                        <a class="btn btn-primary" th:href="@{/history/{id}(id=${history.id})}" target="_blank">ข้อมูล</a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <style>
+        th {
+            text-align: center;
+            color: white;
+        }
+    </style>
+    <script th:src="@{/js/moment.js}"></script>
+    <script th:src="@{/js/warehouse/history.js}"></script>
+</div>
+
+</html>

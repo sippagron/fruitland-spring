@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html xmlns:layout="http://www.w3.org/1999/xhtml" layout:decorate="~{fragments/main_layout}"
+  xmlns:th="https://www.thymeleaf.org">
+
+<div class="container" layout:fragment="content" style="margin-top: 100px; margin-bottom: 50px;">
+  <div class="login-container" style="background-color: white;">
+    <h1 class="display-4" style="text-align: center;">🖥️ Admin login</h1>
+    <form id="form-container" class="mt-3">
+      <div class="mb-3">
+        <label for="exampleInputEmail1" class="form-label">Username :</label>
+        <input type="email" class="form-control" id="exampleInputEmail1">
+      </div>
+      <div class="mb-3">
+        <label for="exampleInputPassword1" class="form-label">Password :</label>
+        <input type="password" class="form-control" id="exampleInputPassword1">
+      </div>
+      <button id="loginBtn" class="btn btn-primary"><i class="fas fa-sign-in-alt"></i> เข้าสู่ระบบ</button>
+    </form>
+  </div>
+  <script>
+    $(document).ready(function () {
+
+      let session = localStorage.getItem("session")
+      if (session !== null) {
+        window.location.href = 'http://localhost:8080/admin';
+      }
+
+      $('#loginBtn').on('click', function (event) {
+        event.preventDefault();
+
+        let data = { "username": $('#exampleInputEmail1').val(), "password": $('#exampleInputPassword1').val() }
+
+        $.ajax({
+          type: 'POST',
+          url: 'http://localhost:3001/api/login',
+          contentType: 'application/json',
+          data: JSON.stringify(data)
+        }).done((res) => {
+          let user = { "username": res[0].username, "role": res[0].role, "id": res[0].id }
+          localStorage.setItem('session', JSON.stringify(user));
+          Swal.fire(
+            'เข้าสู่ระบบสำเร็จ',
+            '',
+            'success'
+          ).then((result) => {
+            window.location.href = 'http://localhost:8080/admin';
+          })
+        }).fail(() => {
+          $('#errA').remove();
+          $('#form-container').append(`<div class="alert alert-danger mt-3" role="alert" id="errA">username หรือ password ไม่ถูกต้อง</div>`);
+        })
+      })
+    })
+  </script>
+  <style>
+    .login-container {
+      padding: 75px 100px;
+      box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.5);
+    }
+
+    .login-container button {
+      padding: 15px 25px;
+    }
+  </style>
+</div>
+
+</html>
